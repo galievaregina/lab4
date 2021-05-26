@@ -1,0 +1,8 @@
+all: lib
+	riscv64-unknown-elf-gcc main.o libMedian.a -o main
+median.o: main.o
+	riscv64-unknown-elf-gcc -g -c median.c
+main.o:
+	riscv64-unknown-elf-gcc -g -c main.c
+lib: median.o
+	riscv64-unknown-elf-ar -rsc libMedian.a median.o
